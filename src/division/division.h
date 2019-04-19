@@ -5,8 +5,7 @@
 #ifndef CMAKE_DIVISION_H
 #define CMAKE_DIVISION_H
 
-static const char *const DIVISION_BY_ZERO_MESSAGE =
-    "Division by zero is illegal";
+static const char *const DIVISION_BY_ZERO_MESSAGE = "Division by zero is illegal";
 
 #include <iostream>
 #include <stdexcept>
@@ -14,7 +13,7 @@ static const char *const DIVISION_BY_ZERO_MESSAGE =
 using namespace std;
 
 class DivisionByZero : public exception {
-public:
+ public:
   virtual const char *what() const throw() { return DIVISION_BY_ZERO_MESSAGE; }
 };
 
@@ -34,16 +33,16 @@ struct DivisionResult {
 };
 
 class Division {
-public:
+ public:
   explicit Division(Fraction fraction) : fraction(fraction){};
 
   ~Division(){};
 
   DivisionResult divide();
 
-protected:
+ protected:
   Fraction fraction;
   DivisionResult result;
 };
 
-#endif // CMAKE_DIVISION_H
+#endif  // CMAKE_DIVISION_H

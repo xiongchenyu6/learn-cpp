@@ -1,6 +1,6 @@
 #include "ac.h"
 #include <iostream>
-#include <malloc.h>
+#include <stdlib.h>
 #include <queue>
 #include <string.h>
 

@@ -2,28 +2,31 @@
 #include <numeric>
 #include <thread>
 #include <vector>
+#include "fib.h"
 
 using namespace std;
 int main(int argc, const char *argv[]) {
-  vector<int> x;
-  x.reserve(3);
-  cin >> x[0] >> x[1] >> x[2];
-  int sum = std::accumulate(x.begin(), x.end(), (int)0);
-  cout << sum << endl;
+  int f = fib::Fibonacci<5>::value;
+  // vector<int> x;
+  // x.resize(3);  //  x.reserve(3); reserve on affec the memory not the size
+  // cin >> x[0] >> x[1] >> x[2];
+  // int sum = std::accumulate(x.begin(), x.end(), (int)0);
+  cout << f << endl;
   return 0;
-  /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-  // vector<int> v{0, 1, 2, 3, 4};
-  // v.reserve(10);
-
-  // for (auto it = v.begin(), e = v.end(); it != e; ++it) {
-  //   const int x = *it;
-  //   cout << x << "," << v.capacity() << endl;
-  //   v.push_back(x);
-  // }
-  // return 0;
 }
 
 // int main() {
+//
+/* Enter your code here. Read input from STDIN. Print output to STDOUT */
+// vector<int> v{0, 1, 2, 3, 4};
+// v.reserve(10);
+
+// for (auto it = v.begin(), e = v.end(); it != e; ++it) {
+//   const int x = *it;
+//   cout << x << "," << v.capacity() << endl;
+//   v.push_back(x);
+// }
+// return 0;
 //  char a[] = "sdmfhsgnshejfgnihaofhsrnihao";
 //  Tree root = buildingTree(); ///建立Trie树
 //  buildingFailPath(root);     ///添加失败转移

@@ -19,8 +19,17 @@ struct Fibonacci<1> {
 
 template <>
 struct Fibonacci<2> {
-  enum { value = 1 };
+  int value = 1;
 };
-}  // namespace fib
+};  // namespace fib
+
+namespace fold {
+template <typename... Args>
+int sum(Args&&... args) {
+  //    return (args + ... + 1 * 2); // Error: operator with precedence below cast
+  return (args + ... + (1 * 2));  // OK
+}
+
+};  // namespace fold
 
 #endif

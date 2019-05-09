@@ -26,6 +26,10 @@ add_library(common_objs OBJECT ${srcs})
 
 add_executable(main "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp" $<TARGET_OBJECTS:common_objs>)
 
+find_package (Threads)
+
+target_link_libraries (main ${CMAKE_THREAD_LIBS_INIT})
+
 set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})

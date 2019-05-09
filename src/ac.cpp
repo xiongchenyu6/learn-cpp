@@ -1,21 +1,21 @@
-#include "ac.h"
-#include <iostream>
 #include <stdlib.h>
-#include <queue>
 #include <string.h>
+#include <iostream>
+#include <queue>
+#include "ac.h"
 
 using namespace std;
 
 typedef struct node {
-  struct node *next[26]; //接收的态
-  struct node *par;      //父亲节点
-  struct node *fail;     //失败节点
+  struct node *next[26];  //接收的态
+  struct node *par;       //父亲节点
+  struct node *fail;      //失败节点
   char inputchar;
-  int patterTag; //是否为可接收态
-  int patterNo;  //接收态对应的可接受模式
+  int patterTag;  //是否为可接收态
+  int patterNo;   //接收态对应的可接受模式
 } * Tree, TreeNode;
 
-char pattern[4][30] = {"nihao", "hao", "hs", "hsr"};
+char pattern[4][30]{"nihao", "hao", "hs", "hsr"};
 
 /**
 申请新的节点，并进行初始化
@@ -26,8 +26,7 @@ TreeNode *getNewNode() {
   tnode->fail = NULL;
   tnode->par = NULL;
   tnode->patterTag = 0;
-  for (i = 0; i < 26; i++)
-    tnode->next[i] = NULL;
+  for (i = 0; i < 26; i++) tnode->next[i] = NULL;
   return tnode;
 }
 
@@ -37,8 +36,7 @@ TreeNode *getNewNode() {
 int nodeToQueue(Tree root, queue<Tree> &myqueue) {
   int i;
   for (i = 0; i < 26; i++) {
-    if (root->next[i] != NULL)
-      myqueue.push(root->next[i]);
+    if (root->next[i] != NULL) myqueue.push(root->next[i]);
   }
   return 0;
 }
@@ -49,13 +47,12 @@ int nodeToQueue(Tree root, queue<Tree> &myqueue) {
 Tree buildingTree() {
   int i, j;
   Tree root = getNewNode();
-  Tree tmp1 = NULL, tmp2 = NULL;
+  Tree tmp1{NULL}, tmp2{NULL};
   for (i = 0; i < 4; i++) {
     tmp1 = root;
-    for (j = 0; j < strlen(pattern[i]); j++) ///对每个模式进行处理
+    for (j = 0; j < strlen(pattern[i]); j++)  ///对每个模式进行处理
     {
-      if (tmp1->next[pattern[i][j] - 'a'] ==
-          NULL) ///是否已经有分支，Trie共用节点
+      if (tmp1->next[pattern[i][j] - 'a'] == NULL)  ///是否已经有分支，Trie共用节点
       {
         tmp2 = getNewNode();
         tmp2->inputchar = pattern[i][j];
@@ -79,7 +76,7 @@ int buildingFailPath(Tree root) {
   char inputchar;
   queue<Tree> myqueue;
   root->fail = root;
-  for (i = 0; i < 26; i++) ///对root下面的第二层进行特殊处理
+  for (i = 0; i < 26; i++)  ///对root下面的第二层进行特殊处理
   {
     if (root->next[i] != NULL) {
       nodeToQueue(root->next[i], myqueue);
@@ -122,10 +119,10 @@ int searchAC(Tree root, char *str, int len) {
     int pos = str[i] - 'a';
     if (tmp->next[pos] != NULL) {
       tmp = tmp->next[pos];
-      if (tmp->patterTag == 1) ///如果为接收态
+      if (tmp->patterTag == 1)  ///如果为接收态
       {
-        cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo
-             << '\t' << pattern[tmp->patterNo] << endl;
+        cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
+             << pattern[tmp->patterNo] << endl;
       }
       i++;
     } else {
@@ -133,17 +130,17 @@ int searchAC(Tree root, char *str, int len) {
         i++;
       else {
         tmp = tmp->fail;
-        if (tmp->patterTag == 1) //如果为接收态
-          cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t'
-               << tmp->patterNo << '\t' << pattern[tmp->patterNo] << endl;
+        if (tmp->patterTag == 1)  //如果为接收态
+          cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
+               << pattern[tmp->patterNo] << endl;
       }
     }
   }
   while (tmp != root) {
     tmp = tmp->fail;
     if (tmp->patterTag == 1)
-      cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo
-           << '\t' << pattern[tmp->patterNo] << endl;
+      cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
+           << pattern[tmp->patterNo] << endl;
   }
   return 0;
 }
@@ -152,8 +149,7 @@ int searchAC(Tree root, char *str, int len) {
 释放内存，DFS
 */
 int destory(Tree tree) {
-  if (tree == NULL)
-    return 0;
+  if (tree == NULL) return 0;
   queue<Tree> myqueue;
   TreeNode *tmp = NULL;
 
@@ -164,8 +160,7 @@ int destory(Tree tree) {
     myqueue.pop();
 
     for (int i = 0; i < 26; i++) {
-      if (tmp->next[i] != NULL)
-        myqueue.push(tmp->next[i]);
+      if (tmp->next[i] != NULL) myqueue.push(tmp->next[i]);
     }
     free(tmp);
   }

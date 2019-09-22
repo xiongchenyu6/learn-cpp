@@ -1,4 +1,5 @@
 #ifndef FIB
+#include <iostream>
 
 namespace fib {
 
@@ -19,8 +20,9 @@ struct Fibonacci<1> {
 
 template <>
 struct Fibonacci<2> {
-  int value = 1;
+  enum { value = 1 };
 };
+
 };  // namespace fib
 
 namespace fold {

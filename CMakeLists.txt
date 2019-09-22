@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
 project(cpp_learn)
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
@@ -32,7 +34,17 @@ target_link_libraries (main ${CMAKE_THREAD_LIBS_INIT})
 
 set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 
-set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
-install(TARGETS main RUNTIME DESTINATION output/bin)
+add_custom_command(TARGET main
+        POST_BUILD
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/Debug/bin/main)
+
+add_custom_target(main_run
+  COMMAND main
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Debug/bin
+  COMMENT "run generated test2 in ${CMAKE_CURRENT_SOURCE_DIR}"
+)
+
+include(CTest)
+enable_testing()
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)

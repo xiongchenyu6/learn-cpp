@@ -4,39 +4,38 @@
 using namespace std;
 
 void StaticBinding::do_sth() {
-  cout << "A do sth"
-       << "\n";
+    cout << "A do sth"
+         << "\n";
 }
 
 void StaticBinding::test() {
-  cout << "A test"
-       << "\n";
+    cout << "A test"
+         << "\n";
 }
 
 void StaticBinding::printA(StaticBinding* a) {
-  cout << "a"
-       << "\n";
+    cout << "a"
+         << "\n";
 }
 
 void B::do_sth() {
-  cout << "B do sth"
-       << "\n";
+    cout << "B do sth"
+         << "\n";
 }
 
 void B::test() {
-  cout << "B test"
-       << "\n";
+    cout << "B test"
+         << "\n";
 }
 
 void B::run_test() {
-  B* b = new B();
-  StaticBinding* a = b;
+    B* b = new B();
+    StaticBinding* a = b;
 
-  StaticBinding::printA(b);
+    StaticBinding::printA(b);
+    b->do_sth();
+    b->test();
 
-  b->do_sth();
-  b->test();
-
-  a->do_sth();
-  a->test();
+    a->do_sth();
+    a->test();
 }

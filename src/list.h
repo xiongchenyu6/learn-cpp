@@ -2,17 +2,16 @@
 #define __LIST_H_
 
 class List {
-  struct Node {
-    int _x;
-    Node* _next;
-    Node(int y) : _x(y), _next(nullptr) {}
-  };
+    struct Node {
+        int _x;
+        Node* _next;
+        Node(int y) : _x(y), _next(nullptr) {}
+    };
+    mutable Node* _head;
 
-  Node* _head;
-
- public:
-  List() : _head(nullptr) {}
-  void insert(int x);
+public:
+    List() : _head(nullptr) {}
+    void insert(int x);
 };
 
-#endif  // __LIST_H_
+#endif// __LIST_H_

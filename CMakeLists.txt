@@ -7,18 +7,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-   file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
-                  "${CMAKE_BINARY_DIR}/conan.cmake")
-endif()
-
-include(${CMAKE_BINARY_DIR}/conan.cmake)
-conan_cmake_run(REQUIRES
-                gtest/1.8.1@bincrafters/stable
-                BASIC_SETUP CMAKE_TARGETS
-                BUILD missing)
-
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CONAN_INCLUDE_DIRS})
@@ -45,7 +33,19 @@ set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 #   COMMENT "run generated test2 in ${CMAKE_CURRENT_SOURCE_DIR}"
 # )
 
-include(CTest)
-enable_testing()
+# include(CTest)
+# enable_testing()
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+# if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+#    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+#    file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
+#                   "${CMAKE_BINARY_DIR}/conan.cmake")
+# endif()
+
+# include(${CMAKE_BINARY_DIR}/conan.cmake)
+# conan_cmake_run(REQUIRES
+#                 gtest/1.8.1@bincrafters/stable
+#                 BASIC_SETUP CMAKE_TARGETS
+#                 BUILD missing)
+
+# add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)

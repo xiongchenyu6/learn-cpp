@@ -6,6 +6,7 @@
 #include <map>
 #include <numeric>
 #include <vector>
+
 #include "ac.h"
 #include "class_constructor.h"
 #include "demo.h"
@@ -16,8 +17,8 @@
 using namespace std;
 
 int main() {
-    //    demo_thread_local();
-    demo_implicit();
+    demo_thread_local();
+    // demo_implicit();
     // map<int, int> m;
     // m[0] = m.size();
     // cout << R"***("quoted string containing the usual''()))))(((( ""<>d{}\n\rterminator (")")***"

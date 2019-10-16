@@ -2,24 +2,43 @@
 #define __DEMO_H_
 
 #include <tmp.h>
+
 #include <future>
 #include <iostream>
 #include <thread>
 #include <vector>
+
 #include "class_constructor.h"
 #include "implicit.h"
 
 using namespace std;
-thread_local ClassConstructor class_constructor;
+
+thread_local ClassConstructor class_constructor_global;
 
 void demo_thread_local() {
-    class_constructor.test();
+    cout << "test in local scope"
+         << "\n";
+    thread_local ClassConstructor class_constructor_local;
+    class_constructor_local.test();
 
-    std::thread t([]() {
+    std::thread t_local([]() {
         std::cout << "Thread: " << std::this_thread::get_id() << " entered" << std::endl;
-        class_constructor.test();
+        class_constructor_local.test();
     });
-    t.join();
+    t_local.join();
+
+    cout << "======================================华丽的分界线===================================="
+         << "\n"
+         << "test in global scope"
+         << "\n";
+
+    class_constructor_global.test();
+
+    std::thread t_global([]() {
+        std::cout << "Thread: " << std::this_thread::get_id() << " entered" << std::endl;
+        class_constructor_global.test();
+    });
+    t_global.join();
 }
 
 void demo_fold() {

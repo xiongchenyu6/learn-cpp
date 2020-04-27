@@ -11,13 +11,17 @@
 #include "class_constructor.h"
 #include "demo.h"
 #include "list.h"
+#include "permutation.h"
 #include "static_binding.h"
 #include "utils.h"
 
 using namespace std;
 
-int main() {
-    demo_thread_local();
+auto main() -> int {
+    demo_perm("hate");
+
+    auto a = vector<string>{"aa"};
+    //demo_thread_local();
     // demo_implicit();
     // map<int, int> m;
     // m[0] = m.size();

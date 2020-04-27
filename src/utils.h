@@ -2,6 +2,6 @@
 
 #include "list.h"
 
-void thFun(List &list);
+auto thFun(List &list) -> void;
 
 #endif

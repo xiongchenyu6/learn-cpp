@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(cpp_learn)
 
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_VERBOSE_MAKEFILE OFF)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -19,7 +22,9 @@ add_executable(main "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp" $<TARGET_OBJECTS:comm
 
 find_package (Threads)
 
-target_link_libraries (main ${CMAKE_THREAD_LIBS_INIT})
+find_package(Protobuf REQUIRED)
+
+target_link_libraries (main ${CMAKE_THREAD_LIBS_INIT} protobuf)
 
 set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 

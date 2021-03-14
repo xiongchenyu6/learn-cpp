@@ -52,6 +52,7 @@ test/test_runner
 build/release/*
 build/debug/*
 build/run/*
+build/*
 
 include/*
 lib/*
@@ -59,3 +60,4 @@ bin/*
 .bash/
 bin/bootstrap
 bin/lib-bash
+.cache/

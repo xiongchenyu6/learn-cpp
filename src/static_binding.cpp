@@ -1,4 +1,5 @@
 #include "static_binding.h"
+
 #include <iostream>
 
 using namespace std;

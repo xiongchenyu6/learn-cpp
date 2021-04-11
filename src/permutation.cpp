@@ -24,10 +24,6 @@ std::vector<std::string> insert(char first, std::string rest) {
     return output;
 }
 
-void demo_perm(std::string input) {
-    for (auto x : permutation(input)) { std::cout << x << "\n"; }
-}
-
 void permute(std::string a, int l, int r) {
     // Base case
     if (l == r)

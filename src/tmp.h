@@ -139,4 +139,9 @@ auto foo(auto t, auto u) -> int {
 
 }// namespace sfinae
 
+// namespace my_shared_ptr {
+// template <class a, class b>
+// {}
+// }// namespace my_shared_ptr
+
 #endif

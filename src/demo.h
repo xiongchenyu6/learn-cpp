@@ -10,6 +10,11 @@
 
 #include "class_constructor.h"
 #include "implicit.h"
+#include "lib.h"
+#include "list.h"
+#include "permutation.h"
+#include "rb_tree.h"
+#include "static_binding.h"
 
 using namespace std;
 
@@ -22,12 +27,14 @@ void demo_thread_local() {
     class_constructor_local.test();
 
     std::thread t_local([]() {
-        std::cout << "Thread: " << std::this_thread::get_id() << " entered" << std::endl;
+        std::cout << "Thread: " << std::this_thread::get_id() << " entered"
+                  << std::endl;
         class_constructor_local.test();
     });
     t_local.join();
 
-    cout << "======================================华丽的分界线===================================="
+    cout << "======================================华丽的分界线================"
+            "===================="
          << "\n"
          << "test in global scope"
          << "\n";
@@ -35,7 +42,8 @@ void demo_thread_local() {
     class_constructor_global.test();
 
     std::thread t_global([]() {
-        std::cout << "Thread: " << std::this_thread::get_id() << " entered" << std::endl;
+        std::cout << "Thread: " << std::this_thread::get_id() << " entered"
+                  << std::endl;
         class_constructor_global.test();
     });
     t_global.join();
@@ -60,7 +68,8 @@ void demo_future_traverse() {
             cout << this_thread::get_id() << " \n";
         }));
     }
-    for_each(futures.begin(), futures.end(), [=](future<void> &fut) { fut.wait(); });
+    for_each(futures.begin(), futures.end(),
+             [=](future<void> &fut) { fut.wait(); });
 }
 
 void demo_recap() {
@@ -104,6 +113,16 @@ void demo_implicit() {
     SubA sub_a;
     Base base = sub_a;
     base.test();
+}
+
+void demo_ttt() {
+    TTT *ttt = new TTT();
+    cout << ttt << endl;
+    ttt->add(3);
+}
+
+void demo_perm(std::string input) {
+    for (auto x : permutation(input)) { std::cout << x << "\n"; }
 }
 
 #endif// __DEMO_H_

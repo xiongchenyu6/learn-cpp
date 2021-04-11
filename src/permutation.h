@@ -3,4 +3,3 @@
 
 std::vector<std::string> permutation(std::string input);
 std::vector<std::string> insert(char first, std::string rest);
-void demo_perm(std::string input);

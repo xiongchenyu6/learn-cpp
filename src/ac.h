@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+
 #include <iostream>
 #include <queue>
 
@@ -51,7 +52,8 @@ Tree buildingTree() {
         tmp1 = root;
         for (j = 0; j < strlen(pattern[i]); j++)///对每个模式进行处理
         {
-            if (tmp1->next[pattern[i][j] - 'a'] == NULL)///是否已经有分支，Trie共用节点
+            if (tmp1->next[pattern[i][j] - 'a'] ==
+                NULL)///是否已经有分支，Trie共用节点
             {
                 tmp2 = getNewNode();
                 tmp2->inputchar = pattern[i][j];
@@ -120,8 +122,8 @@ int searchAC(Tree root, char *str, int len) {
             tmp = tmp->next[pos];
             if (tmp->patterTag == 1)///如果为接收态
             {
-                cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
-                     << pattern[tmp->patterNo] << endl;
+                cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t'
+                     << tmp->patterNo << '\t' << pattern[tmp->patterNo] << endl;
             }
             i++;
         } else {
@@ -130,16 +132,17 @@ int searchAC(Tree root, char *str, int len) {
             else {
                 tmp = tmp->fail;
                 if (tmp->patterTag == 1)//如果为接收态
-                    cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
-                         << pattern[tmp->patterNo] << endl;
+                    cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t'
+                         << tmp->patterNo << '\t' << pattern[tmp->patterNo]
+                         << endl;
             }
         }
     }
     while (tmp != root) {
         tmp = tmp->fail;
         if (tmp->patterTag == 1)
-            cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t' << tmp->patterNo << '\t'
-                 << pattern[tmp->patterNo] << endl;
+            cout << i - strlen(pattern[tmp->patterNo]) + 1 << '\t'
+                 << tmp->patterNo << '\t' << pattern[tmp->patterNo] << endl;
     }
     return 0;
 }

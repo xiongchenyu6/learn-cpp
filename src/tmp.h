@@ -1,6 +1,5 @@
 #include <vector>
 #ifndef FIB
-#include <bits/stdc++.h>
 
 #include <cstddef>
 #include <iostream>

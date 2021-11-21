@@ -8,6 +8,7 @@
 #include <future>
 #include <iostream>
 #include <iterator>
+#include <list>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -22,6 +23,7 @@
 
 #include "ac.h"
 #include "demo.h"
+#include "quick_sort.h"
 #include "utils.h"
 
 using namespace std;
@@ -34,6 +36,7 @@ auto main(int argc, char* args[]) -> int {
     // map<int, int> m;
     // m[0] = m.size();
     // cout
+
     //     << R"***("quoted string containing the usual''()))))(((( ""<>d{}\n\rterminator (")")***"
     //     << "\n"
     //     << sizeof(int) << "\n"

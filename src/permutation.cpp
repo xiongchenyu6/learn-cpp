@@ -1,6 +1,7 @@
 #include "permutation.h"
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 
 std::vector<std::string> permutation(std::string input) {
     std::vector<std::string> output{};

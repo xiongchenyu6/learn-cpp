@@ -49,16 +49,6 @@ void demo_thread_local() {
     t_global.join();
 }
 
-void demo_fold() {
-    int f = fold::sum(1, 2, 3, 4);
-    cout << f << endl;
-}
-
-void demo_fib() {
-    int f = fib::Fibonacci<5>::value;
-    cout << f << endl;
-}
-
 void demo_future_traverse() {
     cout << "main thread id is :" << this_thread::get_id() << endl;
     vector<future<void>> futures;
@@ -108,21 +98,4 @@ int lcs(string &X, string &Y, int m, int n) {
 
     return table[m][n];
 }
-
-void demo_implicit() {
-    SubA sub_a;
-    Base base = sub_a;
-    base.test();
-}
-
-void demo_ttt() {
-    TTT *ttt = new TTT();
-    cout << ttt << endl;
-    ttt->add(3);
-}
-
-void demo_perm(std::string input) {
-    for (auto x : permutation(input)) { std::cout << x << "\n"; }
-}
-
 #endif// __DEMO_H_

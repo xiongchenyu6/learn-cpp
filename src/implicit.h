@@ -11,30 +11,24 @@ private:
     const string sub = "";
 
 public:
-    static map<string, function<void()>> v_table;
+    static map<string, function<string()>> v_table;
 
     Base(const string _sub) : sub(_sub){};
 
-    void test() {
+    string test() {
         if ("" != sub) {
-            v_table.at(sub)();
+            return v_table.at(sub)();
         } else {
-            cout << "from base"
-                 << "\n";
+            return "from base";
         }
     }
 };
-
-map<string, function<void()>> Base::v_table;
 
 class SubA {
 public:
     operator Base() const {
         if (!Base::v_table.contains("SubA")) {
-            Base::v_table.emplace("SubA", []() {
-                cout << "from SubA"
-                     << "\n";
-            });
+            Base::v_table.emplace("SubA", []() { return "from SubA"; });
         }
         return Base("SubA");
     }

@@ -38,5 +38,6 @@ void B::run_test() {
     b->test();
 
     a->do_sth();
+    // 虚函数会根据虚函数表调用子类方法
     a->test();
 }

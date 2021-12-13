@@ -7,18 +7,26 @@
 using namespace std;
 
 struct ClassConstructor {
+    string name;
+    ClassConstructor(string name) : name(name) {
+        cout << "Default constructor in thread : " << std::this_thread::get_id()
+             << " name is " << name << " " << __FUNCTION__ << "(" << (void*)this
+             << ")" << std::endl;
+    }
     ClassConstructor() {
-        cout << "Default constructor" << '\n';
-        std::cout << std::this_thread::get_id() << " " << __FUNCTION__ << "(" << (void*)this << ")"
-                  << std::endl;
+        cout << "Default constructor in thread : " << std::this_thread::get_id()
+             << " " << __FUNCTION__ << "(" << (void*)this << ")" << std::endl;
     }
 
     ~ClassConstructor() {
-        std::cout << std::this_thread::get_id() << " " << __FUNCTION__ << "(" << (void*)this << ")"
-                  << std::endl;
+        cout << "Default destructor in thread : " << std::this_thread::get_id()
+             << " name: " << name << " " << __FUNCTION__ << "(" << (void*)this
+             << ")" << std::endl;
     }
 
-    ClassConstructor(ClassConstructor const&) { std::cout << "Copy constructor" << '\n'; }
+    ClassConstructor(ClassConstructor const&) {
+        std::cout << "Copy constructor" << '\n';
+    }
 
     ClassConstructor& operator=(ClassConstructor const&) {
         std::cout << "Copy assignment operator" << '\n';
@@ -39,7 +47,11 @@ struct ClassConstructor {
         ClassConstructor* m = new ClassConstructor();
         cout << m << endl;
     }
-    void test() const {}
+    void test() const {
+        cout << "Test in thread : " << std::this_thread::get_id() << " "
+             << "name : " << name << " " << __FUNCTION__ << "(" << (void*)this
+             << ")" << std::endl;
+    }
 };
 
 #endif// __CLASS_CONSTRUCTOR_H_

@@ -20,7 +20,7 @@ char pattern[4][30]{"nihao", "hao", "hs", "hsr"};
 /**
 申请新的节点，并进行初始化
 */
-TreeNode *getNewNode() {
+inline TreeNode *getNewNode() {
     int i;
     TreeNode *tnode = new TreeNode();
     tnode->fail = NULL;

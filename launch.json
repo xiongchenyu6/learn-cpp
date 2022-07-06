@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "debug: learn-cpp",
+            "cwd": "${workspaceFolder}",
+            "program": "build/main",
+            "MIMode": "lldb"
+        }
+    ]
+}

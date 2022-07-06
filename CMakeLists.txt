@@ -39,7 +39,7 @@ endif()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_cmake_run(
   REQUIRES
-  gtest/1.10.0
+  gtest/1.11.0
   BASIC_SETUP CMAKE_TARGETS
   BUILD missing
 )

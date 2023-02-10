@@ -2,14 +2,20 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(cpp_learn)
 
+<<<<<<< Updated upstream
 set(CMAKE_BUILD_TYPE Debug)
+=======
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+>>>>>>> Stashed changes
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
+find_package(PkgConfig)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-include_directories(${CONAN_INCLUDE_DIRS})
 
 FILE(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
@@ -23,6 +29,7 @@ target_link_libraries (main ${CMAKE_THREAD_LIBS_INIT})
 
 set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 
+<<<<<<< Updated upstream
 # add_custom_command(TARGET main
 #         POST_BUILD
 #         COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/Debug/bin/main)
@@ -49,3 +56,10 @@ set_target_properties(main PROPERTIES LINK_FLAGS "-static-libstdc++")
 #                 BUILD missing)
 
 # add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+=======
+
+
+include(CTest)
+enable_testing()
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
+>>>>>>> Stashed changes

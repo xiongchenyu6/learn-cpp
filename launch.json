@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug HelloC Latest-1",
+      "type": "lldb-vscode",
+      "request": "launch",
+      "program": "/home/freeman.xiong/Private/learn-cpp/Build/main",
+      "stopAtEntry": true,
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "lldb",
+      "miDebuggerPath": "/nix/store/yxd8fssk2bqb4b7s04hsnbn4pylxnflk-lldb-8.0.1/bin/lldb-mi"
+    }
+  ]
+}

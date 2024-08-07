@@ -1,3 +1,5 @@
+#include <list.h>
+
 #include <algorithm>
 #include <chrono>
 #include <filesystem>
@@ -20,45 +22,11 @@ using std::list;
 
 using namespace std;
 
-<<<<<<< Updated upstream
-int main() {
-    demo_thread_local();
-=======
 auto main(int argc, char* args[]) -> int {
     // demo_lperm("hate");
 
     // demo_thread_local();
->>>>>>> Stashed changes
-    // demo_implicit();
-    // map<int, int> m;
-    // m[0] = m.size();
-    // cout << R"***("quoted string containing the usual''()))))(((( ""<>d{}\n\rterminator (")")***"
-    //      << "\n"
-    //      << sizeof(int) << "\n"
-    //      << sizeof(char) << "\n"
-    //      << m[0] << "\n"
-    //      << endl;
-    // string X = "ABCBDAB";
-    // string Y = "BDCABA";
-    // cout << lcs(X, Y, 4, 4) << "\n";
-    // char a[] = "sdmfhsgnshejfgnihaofhsrnihao";
-    // Tree root = buildingTree();///建立Trie树
-    // buildingFailPath(root);    ///添加失败转移
-    // cout << "待匹配字符串：" << a << endl;
-    // cout << "模式" << pattern[0] << " " << pattern[1] << " " << pattern[2] << "" << pattern[3]
-    //      << " " << endl
-    //      << endl;
-    // cout << "匹配结果如下：" << endl
-    //      << "位置\t"
-    //      << "编号\t"
-    //      << "模式" << endl;
-    // searchAC(root, a, strlen(a));//搜索
-    // destory(root);               //释放动态申请内存
-    //                              // this_thread::sleep_for(chrono::seconds(10));
-<<<<<<< Updated upstream
-    return 0;
-=======
-    //
+
     // std::vector<int> v = {7, 1, 4, 0, -1};
 
     // std::ranges::sort(v);
@@ -150,8 +118,7 @@ auto main(int argc, char* args[]) -> int {
     // dd.join();
     // ee.join();
 
-    vector<int> myvector{5, 4,  6, 7, 9,
-                         3, 10, 9, 5, 6};// myvector:  99  99  99  99
+    vector<int> myvector{5, 4, 6, 7, 9, 3, 10, 9, 5, 6};// myvector:  99  99  99  99
     // std::mutex mu;
     // std::condition_variable cv;
 
@@ -217,5 +184,6 @@ auto main(int argc, char* args[]) -> int {
 
     // demo_perm("abc");
     // demo_implicit();
->>>>>>> Stashed changes
 }
+
+// quick s
